@@ -1,0 +1,95 @@
+// fixed values
+$iosWidth: 20rem;
+$iosBg: #111111;
+$iosResultColor: #ffffff;
+$iosButtonHighlightBg: orange;
+
+// Uncomment these two lines to switch to light theme:
+// $iosBg: #f0f0f0;
+// $iosResultColor: #333333;
+
+// computed values
+$iosSpacing: floor($iosWidth / 20);
+$iosResultFontSize: round($iosWidth / 7);
+$iosButtonSize: $iosWidth / 14;
+$iosButtonBg: lighten($iosBg, 30%);
+$iosButtonLightBg: lighten($iosBg, 60%);
+$iosButtonFg: choose-contrast-color($iosButtonBg);
+$iosButtonLightFg: choose-contrast-color($iosButtonLightBg);
+$iosButtonHighlightFg: choose-contrast-color($iosButtonHighlightBg);
+
+.ios-calculator {
+  width: $iosWidth;
+  background: $iosBg;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+
+  .ios-result {
+    flex: 0 0 ($iosResultFontSize * 3);
+    line-height: 1;
+    color: $iosResultColor;
+    font-size: $iosResultFontSize;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: $iosSpacing;
+  }
+  .ios-buttons {
+    padding: $iosSpacing;
+    display: flex;
+    flex-wrap: wrap;
+
+    .ios-button {
+      flex: 1 0 25%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      > span {
+        width: 90%;
+        height: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $iosButtonBg;
+        color: $iosButtonFg;
+        border-radius: 100%;
+        font-size: $iosButtonSize;
+      }
+
+      &.is-light {
+        > span {
+          background-color: $iosButtonLightBg;
+          color: $iosButtonLightFg;
+        }
+      }
+      &.is-highlight {
+        > span {
+          background-color: $iosButtonHighlightBg;
+          color: $iosButtonHighlightFg;
+        }
+      }
+
+      &.is-double {
+        flex: 1 0 50%;
+        &:after {
+          content: "";
+          display: block;
+          padding-bottom: 50%;
+        }
+        > span {
+          border-radius: 500px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "./variables";
+
+html,
+body {
+  height: 100vh;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+input,
+button,
+select,
+textarea,
+td {
+  font-family: $sans-serif;
+  color: $baseColor;
+}
